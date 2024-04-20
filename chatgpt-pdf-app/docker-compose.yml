@@ -1,0 +1,18 @@
+version: '3.8'
+
+
+services:
+  frontend:
+    build: ./
+    ports:
+      - "3000:3000"  # Map port 3000 on host to port 3000 on container
+    image: react-frontend
+      
+
+  backend:
+    build: ../chatgpt_backend
+    ports:
+      - "5000:5000"  # Map port 5000 on host to port 5000 on container
+    image: flask-backend
+    environment:
+      - OPENAI_API_KEY=sk-proj-TEH2b8o4uEYVxIYAUUi9T3BlbkFJCqeeglof41FCDuAXCeIW
