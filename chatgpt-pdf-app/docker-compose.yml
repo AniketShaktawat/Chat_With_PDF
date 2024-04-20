@@ -14,5 +14,3 @@ services:
     ports:
       - "5000:5000"  # Map port 5000 on host to port 5000 on container
     image: flask-backend
-    environment:
-      - OPENAI_API_KEY=sk-proj-TEH2b8o4uEYVxIYAUUi9T3BlbkFJCqeeglof41FCDuAXCeIW
