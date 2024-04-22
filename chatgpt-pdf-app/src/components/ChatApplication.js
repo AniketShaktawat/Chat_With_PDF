@@ -1,4 +1,3 @@
-// src/components/ChatApplication.js
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';  
 import PdfUploader from './PdfUploader';

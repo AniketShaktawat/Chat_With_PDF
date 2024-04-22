@@ -1,4 +1,3 @@
-// src/components/PdfUploader.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { CircularProgress } from '@mui/material';
