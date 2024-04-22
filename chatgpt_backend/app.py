@@ -7,10 +7,8 @@ import PyPDF2
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-
+# openai.api_key = "sk-proj-EDBy6ZtHS3chCbpzQ2LVT3BlbkFJb91yKqt5NGYl49P3ONnf"
 openai.api_key = os.getenv('OPENAI_API_KEY')
-print("Using OpenAI API Key:", os.getenv('OPENAI_API_KEY'))
-
 
 def _build_cors_preflight_response():
     response = make_response()
@@ -41,9 +39,7 @@ def upload_pdf():
     text = extract_text_from_pdf(file)
     if text is None:
         return jsonify({"error": "Failed to extract text from PDF"}), 400
-    
-    print("test")
-    
+        
     try:
         session_id = os.urandom(24).hex()
         initial_messages = [{"role": "system", "content": "This is a system message to start the chat."},{"role": "user", "content": text}]
@@ -63,6 +59,7 @@ def ask_question():
     data = request.get_json()
     session_id = data.get('session_id')
     question = data.get('question')
+    print(data)
     if not session_id or not question:
         return jsonify({"error": "Missing session_id or question in JSON payload"}), 400   
     chat_history = chat_sessions.get(session_id, [])
@@ -75,14 +72,12 @@ def ask_question():
             messages=chat_history
         )
         chat_history.append(response.choices[0].message)
-        chat_sessions[session_id] = chat_history 
-        
+        chat_sessions[session_id] = chat_history         
         answer = response.choices[0].message['content']
         return jsonify({"answer": answer})
     except Exception as e:
         # print("Error during API call:", e)
         error_message = str(e)
-        print(error_message)
         return jsonify({"error": error_message}), 400
 
 

@@ -87,7 +87,7 @@ function ChatApplication() {
         <div className='left'>
         <div className="nav-bar">
             <h1>Chat with any PDF</h1>
-            <p>Upload your pdf and ask relevant questions (The Startup Playbok is the default PDF)</p>
+            <p>Upload your pdf and ask relevant questions (The Startup Playbook is the default PDF)</p>
         <PdfUploader
             setSessionId={setSessionId}
             onUploadSuccess={clearChatHistory}
