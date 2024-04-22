@@ -21,7 +21,6 @@ Jinja2
 MarkupSafe
 multidict
 numpy
-openai
 openpyxl
 pandas
 pandas-stubs
@@ -40,3 +39,4 @@ tzdata
 urllib3
 Werkzeug
 yarl
+openai==0.28
