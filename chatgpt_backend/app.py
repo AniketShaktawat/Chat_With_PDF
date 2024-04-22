@@ -76,7 +76,6 @@ def ask_question():
         answer = response.choices[0].message['content']
         return jsonify({"answer": answer})
     except Exception as e:
-        # print("Error during API call:", e)
         error_message = str(e)
         return jsonify({"error": error_message}), 400
 
